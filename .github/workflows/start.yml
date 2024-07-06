@@ -16,5 +16,7 @@ jobs:
           echo cd hello &&
           mkdir data &&
           echo md data 
+      - run:
+        work
       - name: show ll
         run: ls -a -l
