@@ -1,0 +1,33 @@
+name: Getan and Init github respository
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: respository url
+        type: string
+        required: true
+
+jobs:
+  start:
+    name: start
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone and cd
+        run: |
+          git clone ${{ inputs.url }}
+          echo clone OK!
+      - name: init sub module 
+        run: |
+          cd "`ls`"
+          git submodule update --init
+          git submodule update --remote
+          echo complate repo OK!
+      - name: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.url }}
+          path: ./
+       
+                  
+          
+    
