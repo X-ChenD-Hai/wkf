@@ -7,11 +7,11 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - name: show ll
-        run: ll
+        run: ls -a -l
       - name: mkdir
         run: |
           mkdir hello
           && cd hello
           && echo "md hello"
       - name: show ll
-        run: ll
+        run: ls -a -l
