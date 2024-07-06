@@ -10,17 +10,19 @@ on:
 jobs:
   start:
     name: start
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: clone and cd
         run: |
           git clone ${{ inputs.url }}
+          if (( $? != 0 ));then echo clone failed&&exit 1; fi
           echo clone OK!
       - name: init sub module 
         run: |
           cd "`ls`"
-          git submodule update --init
-          git submodule update --remote
+          git submodule update --init || echo no submodule
+          git submodule update --remote || echo no remote submodule
+          ./bootstrap || echo no bootstrap
           echo complate repo OK!
       - name: upload
         uses: actions/upload-artifact@v4
