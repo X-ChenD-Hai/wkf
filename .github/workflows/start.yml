@@ -1,7 +1,12 @@
 name: Start
 on:
-    workflow_dispatch:|
-        run
+    workflow_dispatch:
+        inputs:
+            name:
+                description: enteryouname
+                type: string
+                required: true
+                
 
 jobs:
     my-job:
@@ -9,16 +14,5 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - name: show ll
-        run: ls -a -l
-      - name: mkdir
-        run: |
-          mkdir hello && 
-          echo "md hello" &&
-          cd hello &&
-          echo cd hello &&
-          mkdir data &&
-          echo md data 
-      - run:
-        work
-      - name: show ll
-        run: ls -a -l
+        run: echo ${{ inputs.name }}
+
