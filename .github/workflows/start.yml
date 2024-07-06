@@ -10,8 +10,8 @@ jobs:
         run: ls -a -l
       - name: mkdir
         run: |
-          mkdir hello
-          && cd hello
-          && echo "md hello"
+          mkdir hello && 
+          cd hello && 
+          echo "md hello"
       - name: show ll
         run: ls -a -l
