@@ -18,4 +18,5 @@ jobs:
         with:
           name: data
           path: ${{ inputs.images }}.txt
+      - name: finish
         run: echo OK!
