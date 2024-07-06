@@ -1,5 +1,7 @@
 name: Start
-on: push
+on:
+    workflow_dispatch:|
+        run
 
 jobs:
     my-job:
