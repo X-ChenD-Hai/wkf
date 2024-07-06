@@ -11,10 +11,9 @@ jobs:
       - name: mkdir
         run: |
           mkdir hello && 
-          cd hello && 
           echo "md hello" &&
           cd hello &&
-          echo cd dir &&
+          echo cd hello &&
           mkdir data &&
           echo md data 
       - name: show ll
