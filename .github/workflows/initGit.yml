@@ -32,9 +32,10 @@ jobs:
           git submodule update --remote || echo no remote submodule
           ./bootstrap || echo no bootstrap
           ./bootstrap || echo no bootstrap
-          ./configure || echo no configure
+          export INSTALL_PREFIX=$PWD/install
           mkdir-p build && cd build || echo cd build
-          ../make || echo no make
+          ../configure --prefix=$INSTALL_PREFIX || cd .. && echo no configure
+          make && make install || echo no make
           echo complate repo OK!
       - name: upload
         uses: actions/upload-artifact@v4
