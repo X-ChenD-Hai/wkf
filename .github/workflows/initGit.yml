@@ -30,9 +30,13 @@ jobs:
           cd "`ls`"
           git submodule update --init || echo no submodule
           git submodule update --remote || echo no remote submodule
+      - name: call bootstarap 
+        run: |
           ./bootstrap || echo no bootstrap
-          ./bootstrap || echo no bootstrap
-          export INSTALL_PREFIX=$PWD/install
+      - name: build && install 
+        run: |
+          cd "`ls`"
+          export INSTALL_PREFIX=“$PWD/install”
           mkdir -p build && cd build || echo cd build
           ../configure --prefix=$INSTALL_PREFIX || cd .. && echo no configure
           make && make install || echo no make
