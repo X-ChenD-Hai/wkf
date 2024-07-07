@@ -6,6 +6,10 @@ on:
         description: respository url
         type: string
         required: true
+      dependenth:
+        description: dependenth
+        type: string
+        required: false
 
 jobs:
   start:
@@ -17,6 +21,8 @@ jobs:
           git clone ${{ inputs.url }}
           if (( $? != 0 ));then echo clone failed&&exit 1; fi
           echo clone OK!
+      - name: init env
+        run: ${{ inputs.dependenth }}
       - name: init sub module 
         run: |
           cd "`ls`"
