@@ -24,7 +24,7 @@ jobs:
       - name: init env
         run: |
           sudo apt update && sudo apt upgrade -y
-          {{ inputs.dependenth }}
+          ${{ inputs.dependenth }}
       - name: init sub module 
         run: |
           cd "`ls`"
