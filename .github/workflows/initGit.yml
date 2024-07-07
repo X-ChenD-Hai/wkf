@@ -23,7 +23,7 @@ jobs:
           echo clone OK!
       - name: init env
         run: |
-          sudo apt update && sudo apt upgrade -y
+          sudo apt update
           ${{ inputs.dependenth }}
       - name: init sub module 
         run: |
