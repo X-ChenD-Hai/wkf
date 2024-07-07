@@ -22,13 +22,19 @@ jobs:
           if (( $? != 0 ));then echo clone failed&&exit 1; fi
           echo clone OK!
       - name: init env
-        run: ${{ inputs.dependenth }}
+        run: |
+          sudo apt update && sudo apt upgrade -y
+          {{ inputs.dependenth }}
       - name: init sub module 
         run: |
           cd "`ls`"
           git submodule update --init || echo no submodule
           git submodule update --remote || echo no remote submodule
           ./bootstrap || echo no bootstrap
+          ./bootstrap || echo no bootstrap
+          ./configure || echo no configure
+          mkdir-p build && cd build || echo cd build
+          ../make || echo no make
           echo complate repo OK!
       - name: upload
         uses: actions/upload-artifact@v4
