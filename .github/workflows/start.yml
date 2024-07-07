@@ -15,4 +15,6 @@ jobs:
       steps:
       - name: show ll
         run: echo ${{ inputs.name }}
+     - name: Setup Debug Session
+       uses: csexton/debugger-action@master
 
